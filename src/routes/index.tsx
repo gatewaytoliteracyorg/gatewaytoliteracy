@@ -102,7 +102,7 @@ function Home() {
               <img src={hero} alt="Volunteers reading with elementary students in a classroom" width={1600} height={1104} className="h-full w-full object-cover" />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-lift sm:flex">
-              <img src={logo} alt="Gateway to Literacy bridge logo" loading="lazy" width={56} height={56} className="h-12 w-12 object-contain" />
+              <img src={logo} alt="Gateway to Literacy bridge logo" loading="lazy" width={56} height={56} className="h-12 w-12 rounded-xl bg-ink object-contain p-1.5" />
               <div>
                 <p className="text-sm font-bold">Three pillars. One bridge.</p>
                 <p className="text-xs text-muted-foreground">Literacy · Health · Finance</p>

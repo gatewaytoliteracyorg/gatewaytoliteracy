@@ -27,7 +27,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="container-page flex h-20 items-center justify-between gap-6">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={logo} alt="Gateway to Literacy bridge logo" width={48} height={48} className="h-11 w-11 object-contain" />
+          <img src={logo} alt="Gateway to Literacy bridge logo" width={48} height={48} className="h-11 w-11 rounded-xl bg-ink object-contain p-1.5" />
           <span className="leading-tight">
             <span className="block font-display text-lg font-bold tracking-tight">Gateway to Literacy</span>
             <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
