@@ -32,10 +32,11 @@ function ProfileCard({
   image,
 }: {
   name: string;
-  position?: string;
+  position?: string | undefined;
   description: string;
-  image?: string;
+  image?: string | undefined;
 }) {
+
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
       {image ? (
