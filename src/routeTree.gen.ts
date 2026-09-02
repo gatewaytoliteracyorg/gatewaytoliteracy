@@ -11,10 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AwardsRouteImport } from './routes/awards'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as ImpactRouteImport } from './routes/impact'
-import { Route as PartnerSchoolsRouteImport } from './routes/partner-schools'
 import { Route as ProgramsBrightBeginningsBundlesRouteImport } from './routes/programs/bright-beginnings-bundles'
 import { Route as ProgramsFinancialLiteracyRouteImport } from './routes/programs/financial-literacy'
 import { Route as ProgramsHealthLiteracyRouteImport } from './routes/programs/health-literacy'
@@ -27,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AwardsRoute = AwardsRouteImport.update({
+  id: '/awards',
+  path: '/awards',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -42,11 +47,6 @@ const DonateRoute = DonateRouteImport.update({
 const ImpactRoute = ImpactRouteImport.update({
   id: '/impact',
   path: '/impact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PartnerSchoolsRoute = PartnerSchoolsRouteImport.update({
-  id: '/partner-schools',
-  path: '/partner-schools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsBrightBeginningsBundlesRoute =
@@ -70,10 +70,10 @@ const ProgramsHealthLiteracyRoute = ProgramsHealthLiteracyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awards': typeof AwardsRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
-  '/partner-schools': typeof PartnerSchoolsRoute
   '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
   '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
   '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
@@ -81,10 +81,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awards': typeof AwardsRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
-  '/partner-schools': typeof PartnerSchoolsRoute
   '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
   '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
   '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
@@ -93,10 +93,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/awards': typeof AwardsRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
-  '/partner-schools': typeof PartnerSchoolsRoute
   '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
   '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
   '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
@@ -106,10 +106,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/awards'
     | '/contact'
     | '/donate'
     | '/impact'
-    | '/partner-schools'
     | '/programs/bright-beginnings-bundles'
     | '/programs/financial-literacy'
     | '/programs/health-literacy'
@@ -117,10 +117,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/awards'
     | '/contact'
     | '/donate'
     | '/impact'
-    | '/partner-schools'
     | '/programs/bright-beginnings-bundles'
     | '/programs/financial-literacy'
     | '/programs/health-literacy'
@@ -128,10 +128,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/awards'
     | '/contact'
     | '/donate'
     | '/impact'
-    | '/partner-schools'
     | '/programs/bright-beginnings-bundles'
     | '/programs/financial-literacy'
     | '/programs/health-literacy'
@@ -140,10 +140,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AwardsRoute: typeof AwardsRoute
   ContactRoute: typeof ContactRoute
   DonateRoute: typeof DonateRoute
   ImpactRoute: typeof ImpactRoute
-  PartnerSchoolsRoute: typeof PartnerSchoolsRoute
   ProgramsBrightBeginningsBundlesRoute: typeof ProgramsBrightBeginningsBundlesRoute
   ProgramsFinancialLiteracyRoute: typeof ProgramsFinancialLiteracyRoute
   ProgramsHealthLiteracyRoute: typeof ProgramsHealthLiteracyRoute
@@ -165,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/awards': {
+      id: '/awards'
+      path: '/awards'
+      fullPath: '/awards'
+      preLoaderRoute: typeof AwardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -184,13 +191,6 @@ declare module '@tanstack/react-router' {
       path: '/impact'
       fullPath: '/impact'
       preLoaderRoute: typeof ImpactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/partner-schools': {
-      id: '/partner-schools'
-      path: '/partner-schools'
-      fullPath: '/partner-schools'
-      preLoaderRoute: typeof PartnerSchoolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs/bright-beginnings-bundles': {
@@ -220,10 +220,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AwardsRoute: AwardsRoute,
   ContactRoute: ContactRoute,
   DonateRoute: DonateRoute,
   ImpactRoute: ImpactRoute,
-  PartnerSchoolsRoute: PartnerSchoolsRoute,
   ProgramsBrightBeginningsBundlesRoute: ProgramsBrightBeginningsBundlesRoute,
   ProgramsFinancialLiteracyRoute: ProgramsFinancialLiteracyRoute,
   ProgramsHealthLiteracyRoute: ProgramsHealthLiteracyRoute,
