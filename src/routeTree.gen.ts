@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as PartnerSchoolsRouteImport } from './routes/partner-schools'
 import { Route as ProgramsBrightBeginningsBundlesRouteImport } from './routes/programs/bright-beginnings-bundles'
 import { Route as ProgramsFinancialLiteracyRouteImport } from './routes/programs/financial-literacy'
 import { Route as ProgramsHealthLiteracyRouteImport } from './routes/programs/health-literacy'
@@ -23,6 +27,26 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnerSchoolsRoute = PartnerSchoolsRouteImport.update({
+  id: '/partner-schools',
+  path: '/partner-schools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsBrightBeginningsBundlesRoute =
@@ -46,6 +70,10 @@ const ProgramsHealthLiteracyRoute = ProgramsHealthLiteracyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/impact': typeof ImpactRoute
+  '/partner-schools': typeof PartnerSchoolsRoute
   '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
   '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
   '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
@@ -53,6 +81,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/impact': typeof ImpactRoute
+  '/partner-schools': typeof PartnerSchoolsRoute
   '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
   '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
   '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
@@ -61,6 +93,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/impact': typeof ImpactRoute
+  '/partner-schools': typeof PartnerSchoolsRoute
   '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
   '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
   '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
@@ -70,6 +106,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/contact'
+    | '/donate'
+    | '/impact'
+    | '/partner-schools'
     | '/programs/bright-beginnings-bundles'
     | '/programs/financial-literacy'
     | '/programs/health-literacy'
@@ -77,6 +117,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/contact'
+    | '/donate'
+    | '/impact'
+    | '/partner-schools'
     | '/programs/bright-beginnings-bundles'
     | '/programs/financial-literacy'
     | '/programs/health-literacy'
@@ -84,6 +128,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/contact'
+    | '/donate'
+    | '/impact'
+    | '/partner-schools'
     | '/programs/bright-beginnings-bundles'
     | '/programs/financial-literacy'
     | '/programs/health-literacy'
@@ -92,6 +140,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
+  ImpactRoute: typeof ImpactRoute
+  PartnerSchoolsRoute: typeof PartnerSchoolsRoute
   ProgramsBrightBeginningsBundlesRoute: typeof ProgramsBrightBeginningsBundlesRoute
   ProgramsFinancialLiteracyRoute: typeof ProgramsFinancialLiteracyRoute
   ProgramsHealthLiteracyRoute: typeof ProgramsHealthLiteracyRoute
@@ -111,6 +163,34 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partner-schools': {
+      id: '/partner-schools'
+      path: '/partner-schools'
+      fullPath: '/partner-schools'
+      preLoaderRoute: typeof PartnerSchoolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs/bright-beginnings-bundles': {
@@ -140,6 +220,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
+  ImpactRoute: ImpactRoute,
+  PartnerSchoolsRoute: PartnerSchoolsRoute,
   ProgramsBrightBeginningsBundlesRoute: ProgramsBrightBeginningsBundlesRoute,
   ProgramsFinancialLiteracyRoute: ProgramsFinancialLiteracyRoute,
   ProgramsHealthLiteracyRoute: ProgramsHealthLiteracyRoute,
