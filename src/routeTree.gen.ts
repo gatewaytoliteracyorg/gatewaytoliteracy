@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ProgramsBrightBeginningsBundlesRouteImport } from './routes/programs/bright-beginnings-bundles'
+import { Route as ProgramsFinancialLiteracyRouteImport } from './routes/programs/financial-literacy'
+import { Route as ProgramsHealthLiteracyRouteImport } from './routes/programs/health-literacy'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsBrightBeginningsBundlesRoute =
+  ProgramsBrightBeginningsBundlesRouteImport.update({
+    id: '/programs/bright-beginnings-bundles',
+    path: '/programs/bright-beginnings-bundles',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ProgramsFinancialLiteracyRoute =
+  ProgramsFinancialLiteracyRouteImport.update({
+    id: '/programs/financial-literacy',
+    path: '/programs/financial-literacy',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ProgramsHealthLiteracyRoute = ProgramsHealthLiteracyRouteImport.update({
+  id: '/programs/health-literacy',
+  path: '/programs/health-literacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
+  '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
+  '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
+  '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
+  '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/programs/bright-beginnings-bundles': typeof ProgramsBrightBeginningsBundlesRoute
+  '/programs/financial-literacy': typeof ProgramsFinancialLiteracyRoute
+  '/programs/health-literacy': typeof ProgramsHealthLiteracyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/programs/bright-beginnings-bundles'
+    | '/programs/financial-literacy'
+    | '/programs/health-literacy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/programs/bright-beginnings-bundles'
+    | '/programs/financial-literacy'
+    | '/programs/health-literacy'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/programs/bright-beginnings-bundles'
+    | '/programs/financial-literacy'
+    | '/programs/health-literacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ProgramsBrightBeginningsBundlesRoute: typeof ProgramsBrightBeginningsBundlesRoute
+  ProgramsFinancialLiteracyRoute: typeof ProgramsFinancialLiteracyRoute
+  ProgramsHealthLiteracyRoute: typeof ProgramsHealthLiteracyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/bright-beginnings-bundles': {
+      id: '/programs/bright-beginnings-bundles'
+      path: '/programs/bright-beginnings-bundles'
+      fullPath: '/programs/bright-beginnings-bundles'
+      preLoaderRoute: typeof ProgramsBrightBeginningsBundlesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/financial-literacy': {
+      id: '/programs/financial-literacy'
+      path: '/programs/financial-literacy'
+      fullPath: '/programs/financial-literacy'
+      preLoaderRoute: typeof ProgramsFinancialLiteracyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/health-literacy': {
+      id: '/programs/health-literacy'
+      path: '/programs/health-literacy'
+      fullPath: '/programs/health-literacy'
+      preLoaderRoute: typeof ProgramsHealthLiteracyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ProgramsBrightBeginningsBundlesRoute: ProgramsBrightBeginningsBundlesRoute,
+  ProgramsFinancialLiteracyRoute: ProgramsFinancialLiteracyRoute,
+  ProgramsHealthLiteracyRoute: ProgramsHealthLiteracyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
