@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/gateway-logo.png";
+import logoAsset from "@/assets/gateway-logo.png.asset.json";
+
+const logo = logoAsset.url;
 
 export function SiteFooter() {
   return (
@@ -7,13 +9,9 @@ export function SiteFooter() {
       <div className="container-page grid gap-10 py-16 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="Gateway to Literacy logo" loading="lazy" width={48} height={48} className="h-11 w-11 object-contain" />
+            <img src={logo} alt="Gateway to Literacy logo" loading="lazy" width={56} height={56} className="h-14 w-14 object-contain" />
             <span className="font-display text-lg font-bold">Gateway to Literacy</span>
           </div>
-          <p className="mt-4 max-w-md text-sm text-background/70">
-            A student-led nonprofit bridging educational equity for elementary students across Wake County through
-            early literacy, health, and financial education.
-          </p>
           <div className="mt-6 flex gap-2">
             <span className="h-1.5 w-16 rounded-full bg-bbb" />
             <span className="h-1.5 w-16 rounded-full bg-health" />
@@ -32,7 +30,7 @@ export function SiteFooter() {
           <h4 className="eyebrow text-background/60">Organization</h4>
           <ul className="mt-4 space-y-2 text-sm text-background/80">
             <li><Link to="/about" className="hover:text-background">About Us</Link></li>
-            <li><Link to="/partner-schools" className="hover:text-background">Partner Schools</Link></li>
+            <li><Link to="/awards" className="hover:text-background">Awards &amp; Recognition</Link></li>
             <li><Link to="/impact" className="hover:text-background">Impact</Link></li>
             <li><Link to="/donate" className="hover:text-background">Donate</Link></li>
             <li><Link to="/contact" className="hover:text-background">Contact Us</Link></li>
@@ -40,9 +38,8 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-background/15">
-        <div className="container-page flex flex-col gap-2 py-6 text-xs text-background/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page py-6 text-xs text-background/60">
           <p>© {new Date().getFullYear()} Gateway to Literacy. All rights reserved.</p>
-          <p>Donations processed fee-free through Zeffy.</p>
         </div>
       </div>
     </footer>
